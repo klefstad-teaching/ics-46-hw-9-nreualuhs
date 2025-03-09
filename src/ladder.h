@@ -16,3 +16,25 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
 void load_words(set<string> & word_list, const string& file_name);
 void print_word_ladder(const vector<string>& ladder);
 void verify_word_ladder();
+
+
+// VertexList bfs(const Graph& graph, Vertex startVertex) {
+//     VertexList res;
+//     vector<bool> visited(graph.size(), false);
+//     queue<Vertex> queue;
+//     visited[startVertex] = true;
+//     queue.push(startVertex);
+
+//     while (!queue.empty()) {
+//         Vertex ver = queue.front();
+//         queue.pop();
+//         res.push_back(ver);
+//         for (Vertex v : graph.edges_from(ver)) {
+//             if (!visited[v]) {
+//                 visited[v] = true;
+//                 queue.push(v);
+//             }
+//         }
+//     }
+//     return res;
+// }
