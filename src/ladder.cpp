@@ -61,7 +61,7 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
 
         for (const string& word : word_list) {
             if (is_adjacent(last_word, word)) {
-                if (visited.count(word)) {
+                if (visited.find(word) == visited.end()) {
                     visited.insert(word);
                     vector<string> new_ladder = ladder;
                     new_ladder.push_back(word);
@@ -86,8 +86,6 @@ void load_words(set<string> & word_list, const string& file_name) {
 
     string word;
     while (infile >> word) {
-        // Convert to lowercase
-        //transform(word.begin(), word.end(), word.begin(), ::tolower);
         word_list.insert(word);
     }
 }
@@ -109,10 +107,6 @@ void verify_word_ladder() {
     load_words(word_list, "src/words.txt");
 
     my_assert(generate_word_ladder("cat", "dog", word_list).size() == 4);
-
-    vector<string> result = generate_word_ladder("cat", "dog", word_list);
-    cout << result.size() << endl;
-    print_word_ladder(result);
 
     my_assert(generate_word_ladder("marty", "curls", word_list).size() == 6);
 

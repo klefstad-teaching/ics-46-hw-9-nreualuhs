@@ -19,4 +19,4 @@ student_gtests: gtest/student_gtests.cpp dijkstras.o ladder.o
 	$(CXX) $(CXXFLAGS) gtest/student_gtests.cpp dijkstras.o ladder.o -o student_gtests -lgtest -lgtest_main -pthread
 
 clean:
-	rm -f *.o student_gtests ladder_main ladder 
+	rm -f *.o ladder_main ladder 
