@@ -12,7 +12,8 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
     int n = G.size();
 
     vector<int> distances(n, INF);
-    previous.resize(n, -1);
+    previous.resize(n);
+    fill(previous.begin(), previous.end(), -1);
     vector<bool> visited(n, false);
 
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
@@ -49,7 +50,7 @@ vector<int> extract_shortest_path(const vector<int>& /*distances*/, const vector
     if (previous[destination] == -1 && destination != 0) {
         return {}; // Return empty path if unreachable
     }
-    
+
     vector<int> path;
     int cur = destination;
 
