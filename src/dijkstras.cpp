@@ -47,10 +47,24 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
 }
 
 vector<int> extract_shortest_path(const vector<int>& /*distances*/, const vector<int>& previous, int destination) {
+    if (previous[destination] == -1 && destination != 0) {
+        return {}; // Return empty path if unreachable
+    }
+    
     stack<int> stk;
     int cur = destination;
 
+    vector<bool> visited(previous.size(), false);
+
     while (cur != -1) {
+        // stk.push(cur);
+        // cur = previous[cur];
+        if (visited[cur]) {
+            //detect cycle please
+            break;
+        }
+        
+        visited[cur] = true;
         stk.push(cur);
         cur = previous[cur];
     }
