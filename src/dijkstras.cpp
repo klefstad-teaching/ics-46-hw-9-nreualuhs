@@ -46,26 +46,17 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
 }
 
 vector<int> extract_shortest_path(const vector<int>& /*distances*/, const vector<int>& previous, int destination) {
-    if (previous[destination] == -1 && destination != 0) {
-        return {}; // Return empty path if unreachable
-    }
-    
-    stack<int> stk;
+    vector<int> path;
     int cur = destination;
-    
+
     while (cur != -1) {
-        stk.push(cur);
+        path.push_back(cur);
         cur = previous[cur];
     }
-    
-    vector<int> path;
-    while (!stk.empty()) {
-        path.push_back(stk.top());
-        stk.pop();
-    }
-    
+
+    reverse(path.begin(), path.end());
+
     return path;
-    
     // if (previous[destination] == -1 && destination != 0) {
     //     return {}; // Return empty path if unreachable
     // }
