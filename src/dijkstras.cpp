@@ -52,41 +52,48 @@ vector<int> extract_shortest_path(const vector<int>& /*distances*/, const vector
     
     stack<int> stk;
     int cur = destination;
-
-    vector<bool> visited(previous.size(), false);
-
+    
     while (cur != -1) {
-        // stk.push(cur);
-        // cur = previous[cur];
-        if (visited[cur]) {
-            //detect cycle please
-            break;
-        }
-        
-        visited[cur] = true;
         stk.push(cur);
         cur = previous[cur];
     }
-
+    
     vector<int> path;
-    int prev = path.size();
     while (!stk.empty()) {
         path.push_back(stk.top());
         stk.pop();
     }
-
-    if (!path.empty() && previous[path[0]] != -1 && path[0] != destination) {
-            int source = path[0];
-            for(int i = 0; i<prev; ++i){
-                if(path[i] == previous[source]){
-                    source = path[i];
-                    path.erase(path.begin(), path.begin()+i);
-                    break;
-                }
-            }
-        }
-
+    
     return path;
+    
+    // if (previous[destination] == -1 && destination != 0) {
+    //     return {}; // Return empty path if unreachable
+    // }
+    
+    // stack<int> stk;
+    // int cur = destination;
+
+    // vector<bool> visited(previous.size(), false);
+
+    // while (cur != -1) {
+    //     if (visited[cur]) {
+    //         //detect cycle please
+    //         break;
+    //     }
+        
+    //     visited[cur] = true;
+    //     stk.push(cur);
+    //     cur = previous[cur];
+    // }
+
+    // vector<int> path;
+    // int prev = path.size();
+    // while (!stk.empty()) {
+    //     path.push_back(stk.top());
+    //     stk.pop();
+    // }
+
+    // return path;
 
     // vector<int> path;
     // int prev = previous.size();
