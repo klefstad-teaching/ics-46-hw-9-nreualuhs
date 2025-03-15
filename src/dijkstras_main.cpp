@@ -6,7 +6,7 @@ using namespace std;
 int main() {
     Graph graph;
 
-    file_to_graph("src/largest.txt", graph);
+    file_to_graph("src/small.txt", graph);
 
     for (int dest = 0; dest < graph.numVertices; ++dest) {
         vector<int> previous;
