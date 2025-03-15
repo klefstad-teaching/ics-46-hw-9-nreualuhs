@@ -15,30 +15,39 @@ void error(string word1, string word2, string msg) {
 }
 
 bool edit_distance_within(const string& str1, const string& str2, int d) { 
-    int len1 = str1.size();
-    int len2 = str2.size();
+    int length1 = str1.size();
+    int length2 = str2.size();
 
-    if (abs(len1-len2) > d) {
+    if (abs(length2-length1) > d) {
         return false;
     }
 
     int cnt = 0;
-    int i = 0, j = 0;
+    int i = 0;
+    int j = 0;
 
-    while (i < len1 && j < len2) {
+    while (i < length1 && j < length2) {
         if (str1[i] != str2[j]) {
             cnt++;
-            if (cnt > d) {return false;}
-            if (len1 > len2) { i++; }
-            else if (len1 < len2) {j++;}
-            else {i++; j++;}
+            if (cnt > d) {
+                return false;
+            }
+            if (length1 > length2) { 
+                i++; 
+            } else if (length1 < length2) {
+                j++;
+            } else {
+                i++; 
+                j++;
+            }
         } else {
             i++;
             j++;
         }
     }
 
-    cnt += abs(len1 - i - (len2 - j));
+    //cnt += length1 - i (length2 - j);
+    cnt += abs(length1 - i - (length2 - j));
     return cnt <= d;
 }
 
