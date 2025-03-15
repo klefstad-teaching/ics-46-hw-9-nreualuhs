@@ -34,7 +34,6 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
             int v = edge.dst;
             int weight = edge.weight;
 
-//!visited[v] && distances[u] + weight < distances[v]
             if (!visited[v] && distances[u] + weight < distances[v]) {
                 distances[v] = distances[u] + weight;
                 previous[v] = u;
@@ -54,17 +53,7 @@ vector<int> extract_shortest_path(const vector<int>& /*distances*/, const vector
     stack<int> stk;
     int cur = destination;
 
-    vector<bool> visited(previous.size(), false);
-
     while (cur != -1) {
-        // stk.push(cur);
-        // cur = previous[cur];
-        if (visited[cur]) {
-            //detect cycle please
-            break;
-        }
-        
-        visited[cur] = true;
         stk.push(cur);
         cur = previous[cur];
     }
