@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -ggdb -std=c++20 -Wall -Wextra -Werror -Wfatal-errors -pedantic -Isrc
 
-all: dijkstras_main #student_gtests
+all: ladder_main #student_gtests
 
 #main: src/main.cpp bst.o bstree.o avltree.o
 #	$(CXX) $(CXXFLAGS) src/main.cpp -o main bst.o bstree.o avltree.o
@@ -22,4 +22,4 @@ student_gtests: gtest/student_gtests.cpp dijkstras.o ladder.o
 	$(CXX) $(CXXFLAGS) gtest/student_gtests.cpp dijkstras.o ladder.o -o student_gtests -lgtest -lgtest_main -pthread
 
 clean:
-	rm -f *.o dijkstras_main dijkstras
+	rm -f *.o ladder_main ladder
