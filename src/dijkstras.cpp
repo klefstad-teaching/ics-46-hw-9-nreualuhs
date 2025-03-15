@@ -47,34 +47,37 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
 }
 
 vector<int> extract_shortest_path(const vector<int>& /*distances*/, const vector<int>& previous, int destination) {
-    stack<int> stk;
-    int cur = destination;
+    // stack<int> stk;
+    // int cur = destination;
 
-    while (cur != -1) {
-        stk.push(cur);
-        cur = previous[cur];
-    }
-
-    vector<int> path;
-    while (!stk.empty()) {
-        path.push_back(stk.top());
-        stk.pop();
-    }
-
-    return path;
+    // while (cur != -1) {
+    //     stk.push(cur);
+    //     cur = previous[cur];
+    // }
 
     // vector<int> path;
-    // for (int i = destination; i != -1; i = previous[i]) {
-    //     path.push_back(i);
+    // while (!stk.empty()) {
+    //     path.push_back(stk.top());
+    //     stk.pop();
     // }
-    // reverse(path.begin(), path.end());
+
     // return path;
+
+    vector<int> path;
+    int prev = previous.size();
+    int count = 0;
+    for (int i = destination; i != -1; i = previous[i]) {
+        path.push_back(i);
+        if (++count > prev) break;
+    }
+    reverse(path.begin(), path.end());
+    return path;
 }
 
 void print_path(const vector<int>& v, int total) {
     for (size_t i = 0; i < v.size(); ++i) {
-            cout << v[i];
-            if (i != v.size() - 1) cout << " ";
+            cout << v[i] << " ";
+            //if (i != v.size() - 1) cout << " ";
         }
     cout << "\nTotal cost is " << total << "\n"; 
 }
